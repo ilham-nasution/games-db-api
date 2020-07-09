@@ -11,14 +11,24 @@ class Api::V1::DevelopersController < ApplicationController
 
   def create
     @developer = Developer.new(developer_params)
+    if @developer.save
+      render :show, status: :created
+    else
+      render_error
+    end
   end
 
   def update
-    @developer.update(developer_params)
+    if @developer.update(developer_params)
+      render :show
+    else
+      render_error
+    end
   end
 
   def destroy
     @developer.destroy
+    head :no_content
   end
 
   private
@@ -29,5 +39,10 @@ class Api::V1::DevelopersController < ApplicationController
 
   def developer_params
     params.require(:developer).permit(:name, :image)
+  end
+
+  def render_error
+    render json: { errors: @developer.errors.full_messages },
+           status: :unprocessable_entity
   end
 end

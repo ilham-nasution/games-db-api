@@ -7,6 +7,9 @@ class Api::V1::GamesController < ApplicationController
     if params[:developer_id]
       @developer = Developer.find(params[:developer_id])
       @games = Game.where(developer: @developer)
+    elsif params[:platform_id]
+      @platform = Platform.find(params[:platform_id])
+      @games = Game.joins(:game_platforms).where(game_platforms: { platform: @platform })
     else
       @games = Game.all
     end

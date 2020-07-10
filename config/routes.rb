@@ -7,6 +7,9 @@ Rails.application.routes.draw do
         resources :games, only: :index
       end
       resources :games
+      resources :platforms do
+        resources :games, only: :index
+      end
     end
   end
 end

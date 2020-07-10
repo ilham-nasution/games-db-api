@@ -10,6 +10,6 @@ puts '...Finished'
 puts 'Creating Platforms...'
 platforms = ['Playstation 4', 'Nintendo Switch', 'Xbox One']
 platforms.each do |platform|
-  Developer.create!(name: platform)
+  Platform.create!(name: platform)
 end
 puts '...finished'

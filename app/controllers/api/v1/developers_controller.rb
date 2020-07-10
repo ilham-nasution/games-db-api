@@ -38,7 +38,7 @@ class Api::V1::DevelopersController < ApplicationController
   end
 
   def developer_params
-    params.require(:developer).permit(:name, :image)
+    params.require(:developer).permit(:name, :image, :photo)
   end
 
   def render_error

@@ -38,7 +38,7 @@ class Api::V1::PlatformsController < ApplicationController
   end
 
   def platform_params
-    params.require(:platform).permit(:name, :image)
+    params.permit(:name, :photo)
   end
 
   def render_error

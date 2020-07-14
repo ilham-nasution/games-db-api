@@ -2,7 +2,7 @@
 
 class Game < ApplicationRecord
   belongs_to :developer
-  has_many :game_platforms
+  has_many :game_platforms, dependent: :destroy
   has_many :platforms, through: :game_platforms
   has_one_attached :photo
 

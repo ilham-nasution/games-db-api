@@ -21,6 +21,10 @@ class Api::V1::GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.developer = Developer.find(params[:developer_id])
     if @game.save
+      @gameplatform = GamePlatform.new
+      @gameplatform.game = @game
+      @gameplatform.platform = Platform.find(params[:platform_id])
+      @gameplatform.save
       render :show, status: :created
     else
       render_error
@@ -47,7 +51,7 @@ class Api::V1::GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:title, :description, :photo, :release_date, :rating)
+    params.permit(:title, :description, :photo, :release_date, :rating)
   end
 
   def render_error

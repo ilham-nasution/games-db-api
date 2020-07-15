@@ -20,11 +20,14 @@ class Api::V1::GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.developer = Developer.find(params[:developer_id])
+    @platforms = Platform.where(id: params[:platform_ids])
     if @game.save
-      @gameplatform = GamePlatform.new
-      @gameplatform.game = @game
-      @gameplatform.platform = Platform.find(params[:platform_id])
-      @gameplatform.save
+      @platforms.each do |platform|
+        @gameplatform = GamePlatform.new
+        @gameplatform.game = @game
+        @gameplatform.platform = platform
+        @gameplatform.save
+      end
       render :show, status: :created
     else
       render_error

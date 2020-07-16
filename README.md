@@ -1,8 +1,11 @@
 # Games DB API
 
+## Developer
+
 ```GET https://games-db-api.herokuapp.com/api/v1/developers```
 <br />
 example response :
+
 ```
 [
   {
@@ -22,9 +25,10 @@ example response :
   },
 ]
 ```
+
 <br />
 
-```SHOW https://games-db-api.herokuapp.com/api/v1/developers/{id}```
+```GET https://games-db-api.herokuapp.com/api/v1/developers/{id}```
 <br/>
 params :
 
@@ -32,7 +36,6 @@ params :
 | ------ | ----- | ----- | ----- |
 | id | Integer | 1 | The id of game |
 
-<br />
 example response :
 
 ```
@@ -50,3 +53,41 @@ example response :
 }
 ```
 
+<br />
+
+`POST https://games-db-api.herokuapp.com/api/v1/developers`
+<br/>
+request body :
+
+| Name | Type | Example | Description |
+| ------ | ----- | ----- | ----- |
+| name | String | `"Square Enix"` | The name of game developer |
+| photo | File | square_enix.png | The logo of game developer |
+
+<br />
+
+`PATCH https://games-db-api.herokuapp.com/api/v1/developers/{id}`
+<br/>
+params :
+
+| Name | Type | Example | Description |
+| ------ | ----- | ----- | ----- |
+| id | Integer | 1 | The id of game |
+
+<br/>
+request body :
+
+| Name | Type | Example | Description |
+| ------ | ----- | ----- | ----- |
+| name | String | `"Square Enix"` | The name of game developer |
+| photo | File | square_enix.png | The logo of game developer |
+
+<br />
+
+`DEL https://games-db-api.herokuapp.com/api/v1/developers/{id}`
+<br/>
+params :
+
+| Name | Type | Example | Description |
+| ------ | ----- | ----- | ----- |
+| id | Integer | 1 | The id of game |

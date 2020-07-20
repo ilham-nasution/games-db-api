@@ -2,5 +2,5 @@
 
 json.array! @developers do |developer|
   json.extract! developer, :id, :name
-  json.image Cloudinary::Utils.cloudinary_url(developer.photo.key) if developer.photo.attached?
+  json.image Cloudinary::Utils.cloudinary_url(developer.image.key) if developer.image.attached?
 end

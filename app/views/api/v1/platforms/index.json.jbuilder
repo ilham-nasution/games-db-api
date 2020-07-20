@@ -2,5 +2,5 @@
 
 json.array! @platforms do |platform|
   json.extract! platform, :id, :name
-  json.image Cloudinary::Utils.cloudinary_url(platform.photo.key) if platform.photo.attached?
+  json.image Cloudinary::Utils.cloudinary_url(platform.image.key) if platform.image.attached?
 end

@@ -2,5 +2,5 @@
 
 json.array! @games do |game|
   json.extract! game, :id, :title
-  json.image Cloudinary::Utils.cloudinary_url(game.photo.key) if game.photo.attached?
+  json.image Cloudinary::Utils.cloudinary_url(game.image.key) if game.image.attached?
 end

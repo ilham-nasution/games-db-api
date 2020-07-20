@@ -22,7 +22,7 @@ dev_img = [
 developers.each_with_index do |developer, index|
   d = Developer.new(name: developer)
   d_img = URI.open(dev_img[index])
-  d.photo.attach(io: d_img, filename: "#{developer}.png", content_type: 'image/png')
+  d.image.attach(io: d_img, filename: "#{developer}.png", content_type: 'image/png')
   d.save
   puts "#{index + 1} developer created"
 end
@@ -39,7 +39,7 @@ platform_img = [
 platforms.each_with_index do |platform, index|
   plat = Platform.new(name: platform)
   plat_img = URI.open(platform_img[index])
-  plat.photo.attach(io: plat_img, filename: "#{platform}.png", content_type: 'image/png')
+  plat.image.attach(io: plat_img, filename: "#{platform}.png", content_type: 'image/png')
   plat.save
   puts "#{index + 1} platform created"
 end
@@ -60,7 +60,7 @@ games.each_with_index do |game, index|
   g = Game.new(title: game, description: descriptions[index], release_date: dates[index], rating: ratings[index])
   g.developer = Developer.find_by(name: dev_game[index])
   g_img = URI.open(game_img[index])
-  g.photo.attach(io: g_img, filename: "#{game}.png", content_type: 'image/png')
+  g.image.attach(io: g_img, filename: "#{game}.png", content_type: 'image/png')
   g.save
   puts "#{index + 1} game created"
   game_plat_ids[index].each do |id|
